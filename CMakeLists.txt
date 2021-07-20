@@ -4,7 +4,7 @@ project(CPP1_task)
 set(CMAKE_CXX_STANDARD 20)
 
 include_directories(linsolvers)
-link_directories(linsolvers)
+link_directories(linsolvers main)
 
 add_subdirectory(linsolvers)
 add_subdirectory(main)

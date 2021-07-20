@@ -59,6 +59,10 @@ double chordMethod(double (*solvedFunction)(double), double from, double to, dou
         from = to - (to - from) * solvedFunction(to) / (solvedFunction(to) - solvedFunction(from));
         to = from - (from - to) * solvedFunction(from) / (solvedFunction(from) - solvedFunction(to));
 
+        // f != f is true only for NaNs, check if we gone too far and divided by zero due to losing precision
+        if(to != to) return from;
+        if(from != from) return to;
+
         i++;
         if(i == iterationLimit)
         {
@@ -72,7 +76,7 @@ double chordMethod(double (*solvedFunction)(double), double from, double to, dou
 double newtonMethod(double (*solvedFunction)(double), double startingPoint, double epsilon, int iterationLimit) {
     int i = 0;
 
-    while(abs(solvedFunction(startingPoint)) > epsilon) {
+    while(fabs(solvedFunction(startingPoint)) > epsilon) {
         startingPoint = startingPoint - (solvedFunction(startingPoint) / derivativeAtPoint(solvedFunction, startingPoint, EPSILON_INTERNAL));
 
         i++;
