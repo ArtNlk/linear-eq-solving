@@ -1,4 +1,5 @@
 #include "linsolvers.h"
+#include <cmath>
 
 double dichotomyMethod(double (*solvedFunction)(double), double from, double to, double epsilon, int iterationLimit) {
     double midPoint = 0;

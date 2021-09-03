@@ -1,4 +1,5 @@
 #include "functions.h"
+#include <cmath>
 
 double func1(double x) {
     return x + log(x + 0.5) - 0.5;
